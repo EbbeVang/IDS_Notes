@@ -6,6 +6,7 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage{fontspec} 
+\usepackage{hyperref}
 
 \lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
 \lstset{framextopmargin=50pt,frame=bottomline}
@@ -93,5 +94,20 @@ The Blink example can be described as the "hello world"-script for microprocesso
 
 This example demonstration the use og a built in pullup resistor. 
 The reason we use it the pullup resistor is to avoid that the voltage is fluctiating when the button isn't connected to the ground(gnd)
+
 \lstinputlisting{code_examples/lecture_1/button.cpp}
+
+\subsection{Analog Input}
+in previous examples we work with the digitalread function to check if there was power on a pin or not. But many sensors work differently. They are not just on or off but provide a value that can vary between 0 and 4095 (by default on an ESP32)
+
+We will now look at an example where we read a potentiometer. you can change the setting on the potentiometer and read a changing value in our serial monitor
+
+Before we start programming, we just need to set up our electrical circuit
+
+\begin{center}
+  \includegraphics[width=12cm, keepaspectratio]{fritzing/analogInput_potentiometer.png}
+\end{center}
+
+\lstinputlisting{code_examples/lecture_1/analogread_potentiometer.cpp}
+
 \end{document}
