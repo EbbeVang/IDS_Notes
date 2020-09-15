@@ -4,7 +4,7 @@ const int LEDPIN = 15;
 const int BUTTON_PIN = 22;
 int buttonState = 0;
 
-void setup() { 
+void setup() {
   pinMode(LEDPIN, OUTPUT);
   pinMode(BUTTON_PIN, INPUT_PULLUP);
 
@@ -12,13 +12,15 @@ void setup() {
   Serial.begin(9600);
 }
 
-void loop() { 
+void loop() {
   buttonState = digitalRead(BUTTON_PIN);
   Serial.println(buttonState);
 
-  if(buttonState == 1){
+  if (buttonState == 1) {
     // LED OFF
-  }else{
+    digitalWrite(LEDPIN, LOW);
+  } else {
     // LED ON
+    digitalWrite(LEDPIN, HIGH);
   }
 }
