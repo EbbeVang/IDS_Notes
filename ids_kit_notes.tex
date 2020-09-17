@@ -41,6 +41,7 @@ stringstyle=\color{mymauve},     % string literal style
 \begin{document}
 
 
+
 \section{Content of the electronics kit}  
 
 You borrow your kit personally from FlexLab and it must be handed back to
@@ -102,12 +103,25 @@ in previous examples we work with the digitalread function to check if there was
 
 We will now look at an example where we read a potentiometer. you can change the setting on the potentiometer and read a changing value in our serial monitor
 
-Before we start programming, we just need to set up our electrical circuit
+When you run the sample you should be able to see a changing value being printed in your serial monitor. When you turn the potentiometer, the value should change. Even when you are not touching the potentiometer we must expect the value to change a bit because the voltage always fluctuates a little bit.
 
+It's time to set up your electrical circuit and test the example:
 \begin{center}
   \includegraphics[width=12cm, keepaspectratio]{fritzing/analogInput_potentiometer.png}
 \end{center}
 
-\lstinputlisting{code_examples/lecture_1/analogread_potentiometer.cpp}
+\lstinputlisting{code_examples/lecture_2/analogread_potentiometer.cpp}
+
+\subsubsection{PWM: Power with modulation}
+
+Now we have looked at how to read analog input using the analogRead () function. When we want to control output, a technique called PWM is used. The principle is that we turn the power on and off very quickly. Then the "voltage" is controlled by how long the power is on in relation to how long it is off.
+You set a duty cycle that determines how much of the time we turn on the power, and frequency which sets the speed for how often we want to "turn on and off" the power.
+
+See example below:
+\begin{center}
+  \includegraphics[width=12cm, keepaspectratio]{fritzing/pwm_led.png}
+\end{center}
+
+\lstinputlisting{code_examples/lecture_2/pwm_led.cpp}
 
 \end{document}
