@@ -76,9 +76,9 @@ have lost something or something is defective.
 %\includegraphics[width=\textwidth,keepaspectratio=true]{ESP32Espresiffboards12.jpg}
 
 \newpage
-\section{Code Examples}
+\section{Reading the pins on our microscontroller}
 
-\subsection{Digital Input}
+\subsection{Digital Input / Output}
 
 In these first examples, we try to keep things simple and concentrate on controlling a single pin (LED) in the first example and then reading a pin (button) 
 in the next example. In these examples we use digital input / output. 
@@ -88,12 +88,13 @@ Later in the next section we try with analog inputs and outputs, such as reading
 \subsubsection{Blink example}
 The Blink example can be described as the "hello world"-script for microprocessors. Pay attention to the first line where we include arduino, this line of code is only necessary because we use platoformIO as our editor. If you search the net for blink or other arduino examples you will often find examples where this line is missing. That is because the arduino IDE add that by itself.
 
+The code will only work if you connect a LED to pin number 15 and GND.
 
 \lstinputlisting{code_examples/lecture_1/led.cpp}
 
 \subsubsection{Button Example using 'Pullup'}
 
-This example demonstration the use og a built in pullup resistor. 
+This example introduces digtialRead() and demonstrate the use og a built in pullup resistor. 
 The reason we use it the pullup resistor is to avoid that the voltage is fluctiating when the button isn't connected to the ground(gnd)
 
 \lstinputlisting{code_examples/lecture_1/button.cpp}
@@ -112,6 +113,10 @@ It's time to set up your electrical circuit and test the example:
 
 \lstinputlisting{code_examples/lecture_2/analogread_potentiometer.cpp}
 
+programs above show a number between 0 and 4095. the number tells how big the voltage is on the pin we are measuring. Let's change the code a bit so it shows how many volts there are on our pin. we insert a small calculation where we calculate volts based on the ESP32 emitting 3.3v and our range is from 0-4095:
+
+\lstinputlisting{code_examples/lecture_2/analogRead_voltage.cpp}
+
 \subsubsection{PWM: Power with modulation}
 
 Now we have looked at how to read analog input using the analogRead () function. When we want to control output, a technique called PWM is used. The principle is that we turn the power on and off very quickly. Then the "voltage" is controlled by how long the power is on in relation to how long it is off.
@@ -121,6 +126,7 @@ See example below:
 \begin{center}
   \includegraphics[width=12cm, keepaspectratio]{fritzing/pwm_led.png}
 \end{center}
+
 
 \lstinputlisting{code_examples/lecture_2/pwm_led.cpp}
 
